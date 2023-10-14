@@ -1,8 +1,9 @@
-// const prompt = require("prompt-sync")();
+const prompt = require("prompt-sync")();
 console.log("----------Welcome to the ToDo project----------");
 
 let breaki = 0;
 newList = [];
+
 while (breaki == 0) {
     let input = prompt("What would you like to do? ");
 
@@ -21,9 +22,12 @@ while (breaki == 0) {
         console.log("*".repeat(10));
     } else if (input == "delete") {
         if (newList.length > 0) {
-            let deleteIndex = prompt("Enter the index ");
+            let deleteIndex = parseInt(prompt("Enter the index "));
+            while (Number.isNaN(deleteIndex) || deleteIndex > newList.length) {
+                deleteIndex = parseInt(prompt("Enter a valid index ")); 
+            } 
             console.log(`${newList[deleteIndex]} deleted from the list.`);
-            newList.splice(deleteIndex, 1);
+            newList.splice(deleteIndex, 1);  
         } else {
             console.log(`There are no items in the list`);
         }
