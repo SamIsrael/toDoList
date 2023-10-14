@@ -9,19 +9,28 @@ while (breaki == 0) {
     if (input == "new") {
         newInput = prompt("Enter new todo ");
         newList.push(newInput);
+        console.log(`${newInput} added to the list.`);
     } else if (input == "list") {
         console.log("*".repeat(10));
-        if(newList.length <= 0) {
-            console.log("There are no items in the list");
+        if (newList.length <= 0) {
+            console.log(`There are no items in the list`);
         }
         for (let i = 0; i < newList.length; i++) {
             console.log(`${i}: ${newList[i]}`)
         }
         console.log("*".repeat(10));
     } else if (input == "delete") {
-        let deleteIndex = prompt("Enter the index ");
-        newList.splice(deleteIndex, 1);
+        if (newList.length > 0) {
+            let deleteIndex = prompt("Enter the index ");
+            console.log(`${newList[deleteIndex]} deleted from the list.`);
+            newList.splice(deleteIndex, 1);
+        } else {
+            console.log(`There are no items in the list`);
+        }
     } else if (input == "quit") {
+        console.log(`Okay, you quit. Thanks for playing the game.`);
         breaki += 1;
     }
 }
+
+
